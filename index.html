@@ -11,20 +11,40 @@
 
 </head>
 <body>
-    
-    <form>
-        <div class="mb-3">
-            <label for="InputUsername" class="form-label">Username:</label>
-            <input type="text" class="form-control" id="InputUsername">
-        </div>
-        <div class="mb-3">
-            <label for="InputPassword" class="form-label">Password:</label>
-            <input type="password" class="form-control" id="InputPassword">
-        </div>
-        <button type="button" class="btn btn-primary" onclick="createUser()">Submit</button>
-    </form>
 
-    
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form>
+                    <div class="mb-3">
+                        <label for="InputUsername" class="form-label">Username:</label>
+                        <input type="text" class="form-control" id="InputUsername">
+                    </div>
+                    <div class="mb-3">
+                        <label for="InputPassword" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="InputPassword">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="createUser()">Submit</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <form>
+                    <div class="mb-3">
+                        <label for="InputPartyName" class="form-label">PartyName:</label>
+                        <input type="text" class="form-control" id="InputPartyName">
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="createParty()">Submit</button>
+                </form>             
+            </div>
+        </div>
+
+
+    </div>
+
 </body>
 
 <script>
@@ -53,6 +73,30 @@
         });
 }
 
+    function createParty() {
+        let PartyNameInput = document.getElementById("InputPartyName").value;
+
+        let newParty = {
+            name: PartyNameInput,
+            code: "123456",
+            admin: 1
+        }
+
+        fetch("http://localhost:8082/createparty", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newParty)
+        })
+        .then(response => {
+            alert('Is goedgegaan');
+        })
+        .catch(error => {
+            alert('Er is iets fouts gegaan');
+        });
+
+    }
 </script>
 
 </html>
