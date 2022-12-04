@@ -1,0 +1,25 @@
+<script>
+    function eenGet(){
+        fetch('https://localhost:7003/')
+        .then(a=>a.json())
+        .then(b=>console.log(b))
+    }
+    function eenPost(){
+        var checkit = {};
+        checkit.Username = document.getElementById("mijntekst").value;
+        checkit.Password = document.getElementById("mijntekst").value;
+        var checkitJSON = JSON.stringify(checkit);
+        fetch('https://localhost:7003/createuser', {
+                 method: 'POST',
+                 headers: {
+                   'Content-Type': 'application/json'
+                   },
+                   body: checkitJSON
+                 })
+        .then(a=>a.json())
+        .then(b=>console.log(b))
+    }
+</script>
+<input type="text" id="mijntekst">
+<input type="button" value="post" onclick="eenPost()">
+<input type="button" value="get" onclick="eenGet()">
