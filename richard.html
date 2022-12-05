@@ -1,0 +1,37 @@
+<script>
+    function slaGroepOp(){
+        var nwGroep = {};
+        nwGroep.Code = document.getElementById("decodeinput").value;
+        nwGroep.PartyName = document.getElementById("departynameinput").value;
+        var nwGroepJSON = JSON.stringify(nwGroep);
+        console.log(nwGroepJSON); 
+        
+        fetch('https://localhost:7003/api/Party/createparty', {
+                 method: 'POST',
+                 headers: {
+                   'Content-Type': 'application/json'
+                   },
+                   body: nwGroepJSON
+                 })
+    }
+
+    function gaNaarBackend(){
+        alert("Naar backend");
+        fetch('https://localhost:7003/api/trein')
+        .then(a => a.json())
+        .then(d => tonenVanTreinen(d))
+    }
+    function tonenVanTreinen(treinArray){
+        console.log("we gaan treinen tonen");
+        for(var x= 0; x< treinArray.length; x++) {
+            document.getElementById("uitvoer").innerHTML += "<br>-"+treinArray[x].thuisStation;
+        }
+    }
+</script>
+
+Code<input id="decodeinput"><br>
+PartyName<input id="departynameinput"><br>
+<button onclick="slaGroepOp()">Sla Groep op!</button>
+
+<button onclick="gaNaarBackend()">Treinen uitproberen</button>
+<div id="uitvoer"></div>
