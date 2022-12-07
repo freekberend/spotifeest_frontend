@@ -9,11 +9,21 @@
 <body>
     <h1>Vul hier een genre in</h1>
     <input type="text" class="form-control" id="GenreInput">
-    <button type="button" class="btn btn-primary" onclick="getRecommendation()">Submit</button>
+    <button type="button" class="btn btn-primary" onclick="getGenreRecommendation()">Submit</button>
+    <div id="testbak"></div>
+
+    <h1>Vul hier een track in</h1>
+    <input type="text" class="form-control" id="TrackInput">
+    <button type="button" class="btn btn-primary" onclick="getTrackRecommendation()">Submit</button>
+    <div id="testbak"></div>
+
+    <h1>Vul hier een artiest in</h1>
+    <input type="text" class="form-control" id="ArtistInput">
+    <button type="button" class="btn btn-primary" onclick="getArtistRecommendation()">Submit</button>
     <div id="testbak"></div>
 
 <script>
-    function getRecommendation(){
+    function getGenreRecommendation(){
         let recommendation = {};
         recommendation.limit = 1;
         recommendation.market = "NL"
@@ -31,11 +41,71 @@
             document.getElementById("testbak").innerHTML = tracks.tracks[0].artists[0].name 
             + " - " +
             tracks.tracks[0].name;
-            // console.log(tracks.tracks[0])
+            console.log(tracks);
+            console.log("yes")
         })
         .catch(error => {
             console.log(error);
         });
+    }
+
+    function getTrackRecommendation(){
+        let picked_track = {};
+        picked_track.track1 = document.getElementById("TrackInput").value;
+        let track_url = 'http://127.0.0.1:5000/get_track_recommendations';
+        fetch(track_url, {
+            method: "POST", body: JSON.stringify(picked_track)
+        })
+        .then((response) => response.json())
+        .then((tracks) => {
+            document.getElementById("testbak").innerHTML = tracks.tracks[0].artists[0].name 
+            + " - " +
+            tracks.tracks[0].name;
+            console.log(tracks);
+            console.log("yes")
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+    }
+
+    function getArtistRecommendation(){
+        let picked_artist = {};
+        picked_artist.artist1 = document.getElementById("ArtistInput").value;
+        let artist_url = 'http://127.0.0.1:5000/get_artist_recommendations';
+        fetch(artist_url, {
+            method: "POST", body: JSON.stringify(picked_artist)
+        })
+        .then((response) => response.json())
+        .then((tracks) => {
+            document.getElementById("testbak").innerHTML = tracks.tracks[0].artists[0].name 
+            + " - " +
+            tracks.tracks[0].name;
+            console.log(tracks);
+            console.log("yes")
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+
+        // fetch('http://127.0.0.1:5000/get_artist_recommendations', {
+        //          method: 'POST',
+        //          headers: {
+        //            'Content-Type': 'application/json'
+        //            },
+        //            body: JSON.stringify(picked_artist)
+        //          })
+        // .then((response) => response.json())
+        // .then((tracks) => {
+        //     document.getElementById("testbak").innerHTML = tracks.tracks;
+        //     console.log(tracks);
+        //     console.log("yes")
+        // })
+        // .catch(error => {
+        //     console.log(error);
+        // });
     }
 </script>
     
