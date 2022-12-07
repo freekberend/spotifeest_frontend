@@ -7,6 +7,42 @@
 	<title>Spotifeest &mdash; Bootstrap 4</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/my-login.css">
+	<script>
+		function registerUser(){
+            let UsernameInput = document.getElementById('UsernameInput').value;
+			let EmailInput = document.getElementById('EmailInput').value;
+			let PasswordInput = document.getElementById('PasswordInput').value
+            
+            let newUser = {
+                Username: UsernameInput,
+                Email: EmailInput,
+				Password: PasswordInput,
+				Token: ""
+            }
+    
+            fetch("https://localhost:7003/createuser", {
+                method: 'POST',
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(newUser)
+            })
+			.then((response) => response.json())
+ 			// .then((data) => console.log(data.body))
+            .then(data => {
+                console.log(data.token);
+				localStorage.setItem("token", data.token);
+				localStorage.setItem("name", data.username);
+				window.location.href = "index.html";
+            })
+			// .then(
+			// 	window.location.replace("index.html")
+			// )
+            .catch(error => {
+                console.log("EEN ERROR" + error);
+            });
+    	}
+	</script>
 </head>
 <body class="my-login-page">
 	<section class="h-100">
@@ -22,7 +58,7 @@
 							<form method="POST" class="my-login-validation" novalidate="">
 								<div class="form-group">
 									<label for="name">Name</label>
-									<input id="name" type="text" class="form-control" name="name" required autofocus>
+									<input id="UsernameInput" type="text" class="form-control" name="name" required autofocus>
 									<div class="invalid-feedback">
 										What's your name?
 									</div>
@@ -30,7 +66,7 @@
 
 								<div class="form-group">
 									<label for="email">E-Mail Address</label>
-									<input id="email" type="email" class="form-control" name="email" required>
+									<input id="EmailInput" type="email" class="form-control" name="email" required>
 									<div class="invalid-feedback">
 										Your email is invalid
 									</div>
@@ -38,7 +74,7 @@
 
 								<div class="form-group">
 									<label for="password">Password</label>
-									<input id="password" type="password" class="form-control" name="password" required data-eye>
+									<input id="PasswordInput" type="password" class="form-control" name="password" required data-eye>
 									<div class="invalid-feedback">
 										Password is required
 									</div>
@@ -55,7 +91,7 @@
 								</div>
 
 								<div class="form-group m-0">
-									<button type="submit" class="btn btn-primary btn-block">
+									<button type="button" class="btn btn-primary btn-block" onclick="registerUser()">
 										Register
 									</button>
 								</div>

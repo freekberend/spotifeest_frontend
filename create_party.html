@@ -29,7 +29,8 @@
             
             let newParty = {
                 Code: "",
-                partyName: PartynameInput
+                partyName: PartynameInput,
+                partyOwner: localStorage.getItem("token")
             }
     
             fetch("https://localhost:7003/api/Party/createparty", {
