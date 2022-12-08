@@ -127,16 +127,7 @@ nav ul li a {
     border-radius: 30px;
     box-shadow: 1px 4px 12px rgba(94,28,68,.15);
 }
-/*.pepsi {
-    display: flex;
-    float:right;
-    position: absolute;
-    margin-top: 80px;
-    margin-left: 700px;    
-    justify-content: center;
-    background-color: NULL;
-    
-}*/
+
 .button{
     position: relative;
     display: flex;
