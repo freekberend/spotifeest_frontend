@@ -1,0 +1,58 @@
+/*https://www.youtube.com/watch?v=Zn64_IVLO88*/
+
+html{
+    height: 100%;
+    width: 100%;
+    
+}
+body{
+    height: 100%;
+    width: 100%;
+    background-color: #3045575d ;
+}
+
+.navbar{
+    
+    padding: 1% 0%;
+    font-size: 1.2em;
+}
+
+.navbar-brand{
+    height: 50px;
+    padding: 0 15px 15px;
+}
+
+#home{
+    background: url(microphone-device-music.jpg) no-repeat center center fixed;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    padding-top:100px;
+}
+
+.landing-text h1{
+    font-size: 500%;
+    font-weight: 700;
+}
+
+
+.padding{
+    padding-bottom: 60px;
+}
+.padding img{
+    width:80%;
+    padding-top: 60px;
+}
+
+#extratext{
+    padding-top: 60px;
+}
+
+footer{
+    width:100%;
+    padding: 2% 0 2% 0;
+    font-size: 10px;
+   
+}
