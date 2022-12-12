@@ -32,6 +32,10 @@ body{
     padding-top:100px;
 }
 
+#navbaright{
+    padding-right: 30px;
+}
+
 .landing-text h1{
     font-size: 500%;
     font-weight: 700;
