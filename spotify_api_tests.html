@@ -96,29 +96,14 @@
         .catch(error => {
             console.log(error);
         })
-
-        function showRecommendedTracks(){
-            document.getElementById("testbak2").innerHTML = recommendedTracks.toString(); 
-        }
-
-
-        // fetch('http://127.0.0.1:5000/get_artist_recommendations', {
-        //          method: 'POST',
-        //          headers: {
-        //            'Content-Type': 'application/json'
-        //            },
-        //            body: JSON.stringify(picked_artist)
-        //          })
-        // .then((response) => response.json())
-        // .then((tracks) => {
-        //     document.getElementById("testbak").innerHTML = tracks.tracks;
-        //     console.log(tracks);
-        //     console.log("yes")
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // });
     }
+
+    
+    function showRecommendedTracks(){
+            document.getElementById("testbak2").innerHTML = recommendedTracks.toString(); 
+            console.log(recommendedTracks.toString());
+            console.log("test");
+        }
 </script>
     
 </body>
