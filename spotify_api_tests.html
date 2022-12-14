@@ -29,7 +29,7 @@
         recommendation.market = "NL"
         recommendation.seed_genres = document.getElementById("GenreInput").value;
         let jsonresponse = ""
-        fetch('http://127.0.0.1:5000/get_recommendations', {
+        fetch('https://spotifeest-python-backend.azurewebsites.net/get_recommendations', {
                  method: 'POST',
                  headers: {
                    'Content-Type': 'application/json'
@@ -52,7 +52,7 @@
     function getTrackRecommendation(){
         let picked_track = {};
         picked_track.track1 = document.getElementById("TrackInput").value;
-        let track_url = 'http://127.0.0.1:5000/get_track_recommendations';
+        let track_url = 'https://spotifeest-python-backend.azurewebsites.net/get_track_recommendations';
         fetch(track_url, {
             method: "POST", body: JSON.stringify(picked_track)
         })
@@ -73,7 +73,7 @@
     function getArtistRecommendation(){
         let picked_artist = {};
         picked_artist.artist1 = document.getElementById("ArtistInput").value;
-        let artist_url = 'http://127.0.0.1:5000/get_artist_recommendations';
+        let artist_url = 'https://spotifeest-python-backend.azurewebsites.net/get_artist_recommendations';
         fetch(artist_url, {
             method: "POST", body: JSON.stringify(picked_artist)
         })
