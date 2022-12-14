@@ -22,7 +22,15 @@
     <button type="button" class="btn btn-primary" onclick="getArtistRecommendation()">Submit</button>
     <div id="testbak"></div>
 
+    <button type="button" class="btn btn-primary" onclick="showRecommendedTracks">Show</button>
+    <div id="testbak2"></div>
+
 <script>
+    const recommendedTracks = []
+    const inputPreference = []
+
+
+
     function getGenreRecommendation(){
         let recommendation = {};
         recommendation.limit = 1;
@@ -42,7 +50,7 @@
             + " - " +
             tracks.tracks[0].name;
             console.log(tracks);
-            console.log("yes")
+            recommendedTracks.push(tracks)
         })
         .catch(error => {
             console.log(error);
@@ -62,7 +70,7 @@
             + " - " +
             tracks.tracks[0].name;
             console.log(tracks);
-            console.log("yes")
+            recommendedTracks.push(tracks)
         })
         .catch(error => {
             console.log(error);
@@ -83,11 +91,15 @@
             + " - " +
             tracks.tracks[0].name;
             console.log(tracks);
-            console.log("yes")
+            recommendedTracks.push(tracks)
         })
         .catch(error => {
             console.log(error);
         })
+
+        function showRecommendedTracks(){
+            document.getElementById("testbak2").innerHTML = recommendedTracks.toString(); 
+        }
 
 
         // fetch('http://127.0.0.1:5000/get_artist_recommendations', {
