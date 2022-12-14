@@ -32,9 +32,9 @@
             let PartynameInput = document.getElementById('PartynameInput').value;
             
             let newParty = {
-                Code: "",
-                partyName: PartynameInput,
-                partyOwner: localStorage.getItem("token")
+                FeestCode: "",
+                FeestNaam: PartynameInput,
+                FeestOwner: localStorage.getItem("token")
             }
     
             fetch("https://yc2211aspotifeest.azurewebsites.net/api/Party/createparty", {
