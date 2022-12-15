@@ -22,35 +22,5 @@
             <div class="col-3"></div>
         </div>
     </div>
-    <!-- <script>
-        function checkIfTokenPresent() {
-            if (localStorage.getItem("token") == null) {
-                window.location.replace("index.html");
-            }
-        }
-        function createParty() {
-            let PartynameInput = document.getElementById('PartynameInput').value;
-            
-            let newParty = {
-                FeestCode: "",
-                FeestNaam: PartynameInput,
-                FeestOwner: localStorage.getItem("token")
-            }
-    
-            fetch("https://yc2211aspotifeest.azurewebsites.net/api/Party/createparty", {
-                method: 'POST',
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(newParty)
-            })
-            .then(response => {
-                console.log(response);
-            })
-            .catch(error => {
-                console.log(error);
-            });
-    }
-    </script> -->
 </body>
 </html>
