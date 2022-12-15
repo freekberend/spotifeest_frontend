@@ -1,5 +1,5 @@
-// let csharp_url = "https://yc2211aspotifeest.azurewebsites.net";
-let csharp_url = "https://localhost:7003";
+let csharp_url = "https://yc2211aspotifeest.azurewebsites.net";
+// let csharp_url = "https://localhost:7003";
 let python_url = "https://spotifeest-python-backend.azurewebsites.net";
 
 function registerUser(){
@@ -93,7 +93,6 @@ function loginUser(){
             response.json().then(data=> {
                 console.log(data);
                 // alert("user found");
-                console.log(data);
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("name", data.username);
                 window.location.replace("home_new.html");
