@@ -1,7 +1,9 @@
 
 <script>
     var url = 'https://spotifeest-python-backend.azurewebsites.net';
+    var urlCS = 'https://localhost:7003';
     function haalRecommendationOp(){
+        console.log("start");
         var r = document.getElementById("invoerrecomendation").value;
         var genreSend = {}
         genreSend.seed_genres = r;
@@ -14,11 +16,21 @@
         
     }
     function verwerkInformatie(recommendation){
-        console.log(recommendation.tracks[0].name);
-        console.log(recommendation.tracks[0].id);
-        console.log(recommendation.tracks[0].artists[0].name)
-        console.log(document.getElementById("invoerrecomendation").value)
-        console.log(JSON.stringify(recommendation))
+        var rh = {}
+        rh.artist = recommendation.tracks[0].name
+        rh.track = recommendation.tracks[0].id
+        rh.spotifytrackid = recommendation.tracks[0].artists[0].name
+        rh.keuze = document.getElementById("invoerrecomendation").value
+        rh.jsonstring = 'abc'
+        var rhJSON = JSON.stringify(rh)
+        console.log(rhJSON)
+        fetch(urlCS+'/slarechisop/3',{
+            method: "POST", 
+            headers: { 'Content-Type': 'application/json' },
+            body: rhJSON
+        })
+        .then(c => console.log(c))
+  
     }
 </script>
 
