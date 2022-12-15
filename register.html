@@ -7,42 +7,7 @@
 	<title>Spotifeest &mdash; Register</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/my-login.css">
-	<script>
-		function registerUser(){
-            let UsernameInput = document.getElementById('UsernameInput').value;
-			let EmailInput = document.getElementById('EmailInput').value;
-			let PasswordInput = document.getElementById('PasswordInput').value
-            
-            let newUser = {
-                Username: UsernameInput,
-                Email: EmailInput,
-				Password: PasswordInput,
-				Token: ""
-            }
-    
-            fetch("https://yc2211aspotifeest.azurewebsites.net/createuser", {
-                method: 'POST',
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(newUser)
-            })
-			.then((response) => response.json())
- 			// .then((data) => console.log(data.body))
-            .then(data => {
-                console.log(data.token);
-				localStorage.setItem("token", data.token);
-				localStorage.setItem("name", data.username);
-				window.location.href = "index.html";
-            })
-			// .then(
-			// 	window.location.replace("index.html")
-			// )
-            .catch(error => {
-                console.log("EEN ERROR" + error);
-            });
-    	}
-	</script>
+	<script src="js/spotifeest.js"></script>
 </head>
 <body class="my-login-page">
 	<section class="h-100">

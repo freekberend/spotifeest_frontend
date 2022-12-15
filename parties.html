@@ -5,23 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="js/spotifeest.js"></script>
 </head>
 <body>
     <button type="button" class="btn btn-primary" onclick="getAllParties()">Test</button>
     <div id="feesttabel"></div>
-
-    <script>
-        function getAllParties() {
-            fetch("https://yc2211aspotifeest.azurewebsites.net/api/Party/")
-            .then(a => a.json())
-            .then(d=>toonAlleParties(d))
-        }
-        function toonAlleParties(feesten) {
-            for (let x = 0; x < feesten.length; x++) {
-                console.log(feesten[x]);
-                document.getElementById("feesttabel").innerHTML += "<div>" + feesten[x].code + "</div>";
-            }
-        }
-    </script>
 </body>
 </html>
