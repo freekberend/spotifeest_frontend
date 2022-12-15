@@ -26,9 +26,9 @@
     <div id="testbak2"></div>
 
 <script>
-    const recommendedTracks = []
+    let recommendedTracks = []
     const inputPreference = []
-
+    let recmdTrack = {}
 
 
     function getGenreRecommendation(){
@@ -50,9 +50,9 @@
             + " - " +
             tracks.tracks[0].name;
             console.log(tracks);
-            recommendedTracks.push(tracks.tracks[0].artists[0].name 
-            + " - " +
-            tracks.tracks[0].name)
+            recmdTrack.artist = tracks.tracks[0].artists[0].name;
+            recmdTrack.track = tracks.tracks[0].name;
+            recommendedTracks.push(JSON.stringify(recmdTrack));
         })
         .catch(error => {
             console.log(error);
@@ -72,9 +72,9 @@
             + " - " +
             tracks.tracks[0].name;
             console.log(tracks);
-            recommendedTracks.push(tracks.tracks[0].artists[0].name 
-            + " - " +
-            tracks.tracks[0].name)
+            recmdTrack.artist = tracks.tracks[0].artists[0].name;
+            recmdTrack.track = tracks.tracks[0].name;
+            recommendedTracks.push(JSON.stringify(recmdTrack));
         })
         .catch(error => {
             console.log(error);
@@ -95,9 +95,9 @@
             + " - " +
             tracks.tracks[0].name;
             console.log(tracks);
-            recommendedTracks.push(tracks.tracks[0].artists[0].name 
-            + " - " +
-            tracks.tracks[0].name)
+            recmdTrack.artist = tracks.tracks[0].artists[0].name;
+            recmdTrack.track = tracks.tracks[0].name;
+            recommendedTracks.push(JSON.stringify(recmdTrack));
         })
         .catch(error => {
             console.log(error);
@@ -106,9 +106,11 @@
 
     
     function showRecommendedTracks(){
-            document.getElementById("testbak2").innerHTML = recommendedTracks.toString(); 
+            document.getElementById("testbak2").innerHTML = recommendedTracks; 
             console.log(recommendedTracks.toString());
             console.log("test");
+            console.log(JSON.stringify(recmdTrack))
+
         }
 </script>
     
