@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify API tests</title>
+    <script src="js/spotifeest.js"></script>
 </head>
 <body>
     <h1>Vul hier een genre in</h1>
@@ -24,95 +25,5 @@
 
     <button type="button" class="btn btn-primary" onclick="showRecommendedTracks()">Show</button>
     <div id="testbak2"></div>
-
-<script>
-    let recommendedTracks = []
-    const inputPreference = []
-    let recmdTrack = {}
-
-
-    function getGenreRecommendation(){
-        let recommendation = {};
-        recommendation.limit = 1;
-        recommendation.market = "NL"
-        recommendation.seed_genres = document.getElementById("GenreInput").value;
-        let jsonresponse = ""
-        fetch('https://spotifeest-python-backend.azurewebsites.net/get_recommendations', {
-                 method: 'POST',
-                 headers: {
-                   'Content-Type': 'application/json'
-                   },
-                   body: JSON.stringify(recommendation)
-                 })
-        .then((response) => response.json())
-        .then((tracks) => {
-            document.getElementById("testbak").innerHTML = tracks.tracks[0].artists[0].name 
-            + " - " +
-            tracks.tracks[0].name;
-            console.log(tracks);
-            recmdTrack.artist = tracks.tracks[0].artists[0].name;
-            recmdTrack.track = tracks.tracks[0].name;
-            recommendedTracks.push(JSON.stringify(recmdTrack));
-        })
-        .catch(error => {
-            console.log(error);
-        });
-    }
-
-    function getTrackRecommendation(){
-        let picked_track = {};
-        picked_track.track1 = document.getElementById("TrackInput").value;
-        let track_url = 'https://spotifeest-python-backend.azurewebsites.net/get_track_recommendations';
-        fetch(track_url, {
-            method: "POST", body: JSON.stringify(picked_track)
-        })
-        .then((response) => response.json())
-        .then((tracks) => {
-            document.getElementById("testbak").innerHTML = tracks.tracks[0].artists[0].name 
-            + " - " +
-            tracks.tracks[0].name;
-            console.log(tracks);
-            recmdTrack.artist = tracks.tracks[0].artists[0].name;
-            recmdTrack.track = tracks.tracks[0].name;
-            recommendedTracks.push(JSON.stringify(recmdTrack));
-        })
-        .catch(error => {
-            console.log(error);
-        })
-
-    }
-
-    function getArtistRecommendation(){
-        let picked_artist = {};
-        picked_artist.artist1 = document.getElementById("ArtistInput").value;
-        let artist_url = 'https://spotifeest-python-backend.azurewebsites.net/get_artist_recommendations';
-        fetch(artist_url, {
-            method: "POST", body: JSON.stringify(picked_artist)
-        })
-        .then((response) => response.json())
-        .then((tracks) => {
-            document.getElementById("testbak").innerHTML = tracks.tracks[0].artists[0].name 
-            + " - " +
-            tracks.tracks[0].name;
-            console.log(tracks);
-            recmdTrack.artist = tracks.tracks[0].artists[0].name;
-            recmdTrack.track = tracks.tracks[0].name;
-            recommendedTracks.push(JSON.stringify(recmdTrack));
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }
-
-    
-    function showRecommendedTracks(){
-            document.getElementById("testbak2").innerHTML = recommendedTracks; 
-            console.log(recommendedTracks.toString());
-            console.log("test");
-            console.log(JSON.stringify(recmdTrack))
-
-        }
-</script>
-    
 </body>
 </html>
