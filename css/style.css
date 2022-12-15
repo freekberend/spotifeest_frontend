@@ -23,7 +23,7 @@ body{
 }
 
 #home{
-    background: url(microphone-device-music.jpg) no-repeat center center fixed;
+    background: url("../img/microphone-device-music.jpg");
     display: table;
     height: 100%;
     position: relative;
