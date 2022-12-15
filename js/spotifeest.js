@@ -40,14 +40,13 @@ function checkIfTokenPresent() {
         window.location.replace("index.html");
     }
 }
-
 function createParty() {
     let PartynameInput = document.getElementById('PartynameInput').value;
     
     let newParty = {
-        Code: "",
-        partyName: PartynameInput,
-        partyOwner: localStorage.getItem("token")
+        FeestCode: "",
+        FeestNaam: PartynameInput,
+        FeestOwner: localStorage.getItem("token")
     }
 
     fetch(csharp_url + "/api/Party/createparty", {
@@ -117,9 +116,10 @@ function toonAlleParties(feesten) {
         document.getElementById("feesttabel").innerHTML += "<div>" + feesten[x].code + "</div>";
     }
 }
-
-const recommendedTracks = []
+let recommendedTracks = []
 const inputPreference = []
+let recmdTrack = {}
+
 
 function getGenreRecommendation(){
     let recommendation = {};
@@ -127,7 +127,7 @@ function getGenreRecommendation(){
     recommendation.market = "NL"
     recommendation.seed_genres = document.getElementById("GenreInput").value;
     let jsonresponse = ""
-    fetch(python_url +'/get_recommendations', {
+    fetch(python_url + '/get_recommendations', {
              method: 'POST',
              headers: {
                'Content-Type': 'application/json'
@@ -140,7 +140,9 @@ function getGenreRecommendation(){
         + " - " +
         tracks.tracks[0].name;
         console.log(tracks);
-        recommendedTracks.push(tracks)
+        recmdTrack.artist = tracks.tracks[0].artists[0].name;
+        recmdTrack.track = tracks.tracks[0].name;
+        recommendedTracks.push(JSON.stringify(recmdTrack));
     })
     .catch(error => {
         console.log(error);
@@ -150,7 +152,7 @@ function getGenreRecommendation(){
 function getTrackRecommendation(){
     let picked_track = {};
     picked_track.track1 = document.getElementById("TrackInput").value;
-    let track_url = python_url +'/get_track_recommendations';
+    let track_url = python_url + '/get_track_recommendations';
     fetch(track_url, {
         method: "POST", body: JSON.stringify(picked_track)
     })
@@ -160,7 +162,9 @@ function getTrackRecommendation(){
         + " - " +
         tracks.tracks[0].name;
         console.log(tracks);
-        recommendedTracks.push(tracks)
+        recmdTrack.artist = tracks.tracks[0].artists[0].name;
+        recmdTrack.track = tracks.tracks[0].name;
+        recommendedTracks.push(JSON.stringify(recmdTrack));
     })
     .catch(error => {
         console.log(error);
@@ -172,7 +176,6 @@ function getArtistRecommendation(){
     let picked_artist = {};
     picked_artist.artist1 = document.getElementById("ArtistInput").value;
     let artist_url = python_url + '/get_artist_recommendations';
-    console.log(artist_url);
     fetch(artist_url, {
         method: "POST", body: JSON.stringify(picked_artist)
     })
@@ -182,15 +185,22 @@ function getArtistRecommendation(){
         + " - " +
         tracks.tracks[0].name;
         console.log(tracks);
-        recommendedTracks.push(tracks)
+        recmdTrack.artist = tracks.tracks[0].artists[0].name;
+        recmdTrack.track = tracks.tracks[0].name;
+        recommendedTracks.push(JSON.stringify(recmdTrack));
     })
     .catch(error => {
         console.log(error);
     })
+}
 
-    function showRecommendedTracks(){
-        document.getElementById("testbak2").innerHTML = recommendedTracks.toString(); 
-    }
+
+function showRecommendedTracks(){
+        document.getElementById("testbak2").innerHTML = recommendedTracks; 
+        console.log(recommendedTracks.toString());
+        console.log("test");
+        console.log(JSON.stringify(recmdTrack))
+
 }
 
 function slaGroepOp(){
