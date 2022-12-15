@@ -1,0 +1,42 @@
+
+<script>
+    var url = 'https://spotifeest-python-backend.azurewebsites.net';
+    var urlCS = 'https://localhost:7003';
+    function haalRecommendationOp(){
+        console.log("start");
+        var r = document.getElementById("invoerrecomendation").value;
+        var genreSend = {}
+        genreSend.seed_genres = r;
+        var genreSendJSON = JSON.stringify(genreSend);
+        fetch(url+'/get_recommendations',{
+            method: "POST", body: genreSendJSON
+        })
+        .then(c => c.json())
+        .then(d => verwerkInformatie(d) )
+        
+    }
+    function verwerkInformatie(recommendation){
+        var rh = {}
+        rh.artist = recommendation.tracks[0].name
+        rh.track = recommendation.tracks[0].id
+        rh.spotifytrackid = recommendation.tracks[0].artists[0].name
+        rh.keuze = document.getElementById("invoerrecomendation").value
+        rh.jsonstring = 'abc'
+        var rhJSON = JSON.stringify(rh)
+        console.log(rhJSON)
+        fetch(urlCS+'/slarechisop/3',{
+            method: "POST", 
+            headers: { 'Content-Type': 'application/json' },
+            body: rhJSON
+        })
+        .then(c => console.log(c))
+  
+    }
+</script>
+
+
+Genre:
+<input id="invoerrecomendation">(jazz - pop)
+<br>
+
+<button onclick="haalRecommendationOp()">getrecommendation</button>

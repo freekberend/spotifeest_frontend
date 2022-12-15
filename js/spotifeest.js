@@ -1,5 +1,5 @@
-let csharp_url = "https://yc2211aspotifeest.azurewebsites.net";
-// let csharp_url = "https://localhost:7003";
+//let csharp_url = "https://yc2211aspotifeest.azurewebsites.net";
+let csharp_url = "https://localhost:7003";
 let python_url = "https://spotifeest-python-backend.azurewebsites.net";
 
 function registerUser(){
