@@ -1,5 +1,5 @@
-let csharp_url = "https://yc2211aspotifeest.azurewebsites.net";
-//let csharp_url = "https://localhost:7003";
+//let csharp_url = "https://yc2211aspotifeest.azurewebsites.net";
+let csharp_url = "https://localhost:7003";
 let python_url = "https://spotifeest-python-backend.azurewebsites.net";
 
 function registerUser(){
@@ -56,8 +56,12 @@ function createParty() {
         },
         body: JSON.stringify(newParty)
     })
-    .then(response => {
-        console.log(response);
+    .then((response) => response.json())
+    .then(data => {
+        console.log(data);
+        localStorage.setItem("feestNaam", data.feestNaam);
+        localStorage.setItem("feestCode", data.feestCode);
+        window.location.replace("voorkeurregistreren.html");
     })
     .catch(error => {
         console.log(error);
