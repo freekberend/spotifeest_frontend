@@ -1,1 +1,31 @@
-heyhey
+<script>
+    var urlCS = 'https://localhost:7003';
+    
+    function GetPlaylist(){
+        fetch(urlCS + "/allerh/7")
+        .then(t => t.json())
+        .then(d => ShowPlaylist(d))
+    }
+    function ShowPlaylist(rhs){
+        document.getElementById("resultaat").innerHTML = ""
+        for(var x = 0; x < rhs.length; x++ ){
+            document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
+        }
+    }
+    
+    
+    
+    
+</script>
+
+<body onload = "GetPlaylist()">
+
+heyhey <br>
+Zie hier een mooie playlist
+
+
+
+
+<div id="resultaat"></div>
+
+</body>
