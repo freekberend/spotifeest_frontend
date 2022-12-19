@@ -37,32 +37,137 @@
         </div>
     </nav>
 
-    <div class="container">
-        <table id="data" class="table table-striped">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Age</th>
-                <th>Address</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for user in users %}
-                <tr>
-                  <td>{{ user.name }}</td>
-                  <td>{{ user.age }}</td>
-                  <td>{{ user.address }}</td>
-                  <td>{{ user.phone }}</td>
-                  <td>{{ user.email }}</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
 
-    </div>
-    
-    
+	<div class="padding">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-auto text-center">
+				<h5>Overview Groups</h5>
+					<!--Table-->
+					<table id="xtable" class="table table-dark table-hover w-auto">
+
+						<!--Table head-->
+						<thead>
+						<tr>
+							<th>Code</th>
+							<th>Go to Playlist</th>
+						</tr>
+						</thead>
+						<!--Table head-->
+					
+						<!--Table body-->
+						<tbody>
+						<tr>
+							
+							<td>4569</td>
+							<td>
+								<button type="button" class="btn btn-primary">play</button>
+							</td>
+						</tr>
+						<tr>
+							
+							<td>1234</td>
+							<td>
+								<button type="button" class="btn btn-primary">play</button>
+							</td>
+						</tr>
+						<tr>
+							
+							<td>7894</td>
+							<td>
+								<button type="button" class="btn btn-primary">play</button>
+							</td>
+						</tr>
+						</tbody>
+						<!--Table body-->
+					
+					
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <!--Table-->
+
+<!--<div class="container">
+	<h1 class="text text-center ">
+	overview groups
+	</h1>
+	<table class="table table-hover table-dark w-auto">
+		<thead>
+		  <tr>
+			<th scope="col"></th>
+			<th scope="col">group code</th>
+			<th scope="col">go to playlist</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			
+			<td>4569</td>
+			<td>
+				<button type="button" class="btn btn-dark">playlist</button>
+			</td>
+		  </tr>
+		  <tr>
+			<th scope="row">2</th>
+			<td>4569</td>
+			<td>
+				<button type="button" class="btn btn-dark">playlist</button>
+			</td>
+		  </tr>
+		  <tr>
+			<th scope="row">3</th>
+			<td>4569</td>
+			<td>
+				<button type="button" class="btn btn-dark">playlist</button>
+			</td>
+		  </tr>
+		</tbody>
+	  </table>
+</div>-->
+
+<!-- Include jQuery and other required
+files for Bootstrap -->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+// Include the JavaScript file
+for Bootstrap table 
+<script src=
+"https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js">
+</script>
+<script type="text/javascript">
+	$(document).ready(function () {
+
+	// Use the given data to create
+	// the table and display it
+	$('table').bootstrapTable({
+		data: mydata
+	});
+	});
+
+	// Specify the JSON data to be displayed
+	var mydata =
+	[
+		{
+		"id": "24323",
+		},
+		{
+		"id": "24564",
+		},
+		{
+		"id": "24345",
+		},
+		{
+		"id": "24874",
+		},
+		{
+		"id": "24323",
+		}
+	]; --> 
+</script>
 </body>
 </html>
