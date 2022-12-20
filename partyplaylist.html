@@ -6,10 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body onload = "GetPlaylist()">
     <h1>Hier staat de PartyNaam</h1>
     <h2>Hier staat de PartyCode</h2>
-    <b>Dit is de party playlist pagina, met de link naar de playlist OF een embed met de playlist op Spotify</b>   
+    <div id="resultaat"></div>
     
 </body>
 </html>
+
+<script>
+    var urlCS = 'https://localhost:7003';
+    
+    function GetPlaylist(){
+        fetch(urlCS + "/allerh/7")
+        .then(t => t.json())
+        .then(d => ShowPlaylist(d))
+    }
+    function ShowPlaylist(rhs){
+        document.getElementById("resultaat").innerHTML = ""
+        for(var x = 0; x < rhs.length; x++ ){
+            document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
+        }
+    }
+    
+    
+    
+    
+</script>
+
+<body onload = "GetPlaylist()">
+
+<br>
+Zie hier een mooie playlist
+
+
+
+
+
+
+</body>
