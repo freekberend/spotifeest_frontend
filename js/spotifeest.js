@@ -61,7 +61,34 @@ function createParty() {
         console.log(data);
         localStorage.setItem("feestNaam", data.feestNaam);
         localStorage.setItem("feestCode", data.feestCode);
+        localStorage.setItem("feestOwner", data.feestOwner);
         window.location.replace("voorkeurregistreren.html");
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+
+function joinParty() {
+    let PartynameInput = document.getElementById('PartynameInput').value;
+
+    fetch(csharp_url + "/api/Party/" + PartynameInput + "/" + localStorage.getItem("token"))
+    .then((response) => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.hasOwnProperty('Fout')) {
+            console.log("FOUT GEVONDEN: " + data.Fout);
+            document.getElementById("foutscherm").innerHTML = 
+                "<div class=\"alert alert-danger\" role=\"alert\">" +
+                data.Fout + 
+                "</div>";
+        }
+        else {
+            localStorage.setItem("feestNaam", data.FeestNaam);
+            localStorage.setItem("feestCode", data.FeestCode);
+            localStorage.setItem("feestOwner", data.FeestOwner);
+            window.location.replace("voorkeurregistreren.html");
+        }
     })
     .catch(error => {
         console.log(error);
