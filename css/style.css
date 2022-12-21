@@ -23,7 +23,7 @@ body{
 }
 
 #home{
-    background: url("img/microphone-device-music.jpg");
+    background: url("../img/microphone-device-music.jpg");
     display: table;
     height: 100%;
     position: relative;
@@ -32,7 +32,7 @@ body{
     padding-top:100px;
 }
 
-#navbaright{
+#navbarright{
     padding-right: 30px;
 }
 
