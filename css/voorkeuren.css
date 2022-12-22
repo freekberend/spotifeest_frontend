@@ -1,0 +1,22 @@
+.card {
+    border: 0;
+    border-radius: 0;
+    color: #fff;
+    box-shadow: 5px 5px 10px #e1e1e1;
+    padding: 3em 0;
+    border-bottom-right-radius: 4em;
+    border-top-left-radius: 4em;
+    background: linear-gradient(to left, teal 50%, #26282b 50%);
+    background-size: 200%;
+    background-position: right;
+    transition: background-position 0.5s ease-out;
+  }
+  .card-icon {
+    margin: 0 1em;
+  }
+  .card-icon i{
+    font-size: 3em;
+  }
+  .card:hover {
+    background-position: left;
+  }
