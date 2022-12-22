@@ -8,6 +8,16 @@
     background-size: cover;
     padding-top:150px;
 }
+#homea{
+    background: url("../img/crowd.jpg");
+    opacity:0.8;
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    padding-top:150px;
+}
 
 #cardf{
     opacity:0.9;

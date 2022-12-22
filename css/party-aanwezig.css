@@ -1,32 +1,4 @@
-html{
-    height: 100%;
-    width: 100%;
-    
-}
-body{
-    height: 100%;
-    width: 100%;
-    background-color: #3045575d ;
-}
 
-.navbar{
-    
-    padding: 1% 0%;
-    font-size: 1.2em;
-}
-
-.navbar-brand{
-    height: 50px;
-    padding: 0 15px 15px;
-}
-
-#navbaright{
-    padding-right: 30px;
-}
-
-.padding{
-    padding-bottom: 60px;
-}
 
 #xtable{
     padding-top: 20px;
