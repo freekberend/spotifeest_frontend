@@ -12,7 +12,7 @@
 <script src="js/spotifeest.js"></script>
 </head>
 
-<body>
+<body onload="checkIfTokenPresent()">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #1b4264a4">
         <a class="navbar-brand" href="#"><img src="img/logo.jpg" width="50" height="50" alt="" class="d-inline-block align-center"> Spotifeest </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,10 +38,7 @@
     </nav>
     
 
-Hier kunt u uw voorkeuren opgeven.<br>
-<input id="vandeuserdeid" value="7">(7)
-<br>
-
+<h3>Geef een voorkeur op, op basis van genre</h3>
 <select name="list" id="selectedGenre">
     <option selected id="genrerecomendation"></option>
     <option value="acoustic">acoustic</option>
@@ -176,15 +173,15 @@ Hier kunt u uw voorkeuren opgeven.<br>
 <button type="submit" onclick="haalGenreRecommendationOp()">getGenreRecommendation</button>
 
 <br>
-<button onclick="haalAlleRecommendationHistoryOp()">toon all mijne</button>
+<button onclick="haalAlleRecommendationHistoryOp()">toon alle recommendations in database</button>
 <div id="resultaat"></div>
 <br><br><br>
+<h3>Geef een voorkeur op, op basis van nummer</h3>
 <input id="trackrecommendation">
-<input id="useridtrack">
 <button onclick="haalTrackRecommendationOp()">getTrackRecommendation</button>
 <br><br><br>
+<h3>Geef een voorkeur op, op basis van artiest</h3>
 <input id="artistrecommendation">
-<input id="useridartist">
 <button onclick="haalArtistRecommendationOp()">getArtistRecommendation</button>
 <br>
 <br>
@@ -257,7 +254,7 @@ Hier kunt u uw voorkeuren opgeven.<br>
         rh.jsonstring = 'abc'
         var rhJSON = JSON.stringify(rh)
         console.log(rhJSON)
-        fetch(urlCS+'/slarechisop/'+document.getElementById("vandeuserdeid").value ,{
+        fetch(urlCS+'/slarechisop/' + localStorage.getItem("token") + "/" + localStorage.getItem("feestCode"),{
             method: "POST", 
             headers: { 'Content-Type': 'application/json' },
             body: rhJSON
