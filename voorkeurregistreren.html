@@ -13,7 +13,7 @@
 <script src="js/spotifeest.js"></script>
 </head>
 
-<body >
+<body onload="checkIfTokenPresent()">
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #1b4264a4">
         <a class="navbar-brand" href="#"><img src="img/Logo_A.png" alt="" class="d-inline-block align-center img-responsive"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,165 +41,198 @@
         </div>
     </nav>
 
-    <div class="card" style="width: 15rem;">
-        <div class="card-icon"><i class="bi bi-circle"></i></div>
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-outline-light">Go somewhere</a>
+    <div id="homep">
+        <div class="container-fluid p-0 m-0 align-items-center justify-content-center" id="containervh">
+            <div class="row">
+                <div class="col-sm-12 text-center" id="texth">
+                    <h1 style="color: #e1e1e1; font-size:300%; font-weight: 700;">Choose your preferences</h1><br><br>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-lg-4 mb-2  text-center" >
+                    <div class="card box-shadow mx-auto" id="padr">
+                        <div class="card-body">
+                            <h4 class="card-title">Genre</h4>
+                            <p class="card-text">Select a genre</p>
+                            <select name="list" id="selectedGenre">
+                                <option selected id="genrerecomendation"></option>
+                                <option value="acoustic">acoustic</option>
+                                <option value="afrobeat">afrobeat</option>
+                                <option value="alt-rock">alt-rock</option>
+                                <option value="alternative">alternative</option>
+                                <option value="ambient">ambient</option>
+                                <option value="anime">anime</option>
+                                <option value="black-metal">black-metal</option>
+                                <option value="bluegrass">bluegrass</option>
+                                <option value="blues">blues</option>
+                                <option value="bossanova">bossanova</option>
+                                <option value="brazil">brazil</option>
+                                <option value="breakbeat">breakbeat</option>
+                                <option value="british">british</option>
+                                <option value="cantopop">cantopop</option>
+                                <option value="chicago-house">chicago-house</option>
+                                <option value="children">children</option>
+                                <option value="chill">chill</option>
+                                <option value="classical">classical</option>
+                                <option value="club">club</option>
+                                <option value="comedy">comedy</option>
+                                <option value="country">country</option>
+                                <option value="dance">dance</option>
+                                <option value="dancehall">dancehall</option>
+                                <option value="death-metal">death-metal</option>
+                                <option value="deep-house">deep-house</option>
+                                <option value="detroit-techno">detroit-techno</option>
+                                <option value="disco">disco</option>
+                                <option value="disney">disney</option>
+                                <option value="drum-and-bass">drum-and-bass</option>
+                                <option value="dub">dub</option>
+                                <option value="dubstep">dubstep</option>
+                                <option value="edm">edm</option>
+                                <option value="electro">electro</option>
+                                <option value="electronic">electronic</option>
+                                <option value="emo">emo</option>
+                                <option value="folk">folk</option>
+                                <option value="forro">forro</option>
+                                <option value="french">french</option>
+                                <option value="funk">funk</option>
+                                <option value="garage">garage</option>
+                                <option value="german">german</option>
+                                <option value="gospel">gospel</option>
+                                <option value="goth">goth</option>
+                                <option value="grindcore">grindcore</option>
+                                <option value="groove">groove</option>
+                                <option value="grunge">grunge</option>
+                                <option value="guitar">guitar</option>
+                                <option value="happy">happy</option>
+                                <option value="hard-rock">hard-rock</option>
+                                <option value="hardcore">hardcore</option>
+                                <option value="hardstyle">hardstyle</option>
+                                <option value="heavy-metal">heavy-metal</option>
+                                <option value="hip-hop">hip-hop</option>
+                                <option value="holidays">holidays</option>
+                                <option value="honky-tonk">honky-tonk</option>
+                                <option value="house">house</option>
+                                <option value="idm">idm</option>
+                                <option value="indian">indian</option>
+                                <option value="indie">indie</option>
+                                <option value="indie-pop">indie-pop</option>
+                                <option value="industrial">industrial</option>
+                                <option value="iranian">iranian</option>
+                                <option value="j-dance">j-dance</option>
+                                <option value="j-idol">j-idol</option>
+                                <option value="j-pop">j-pop</option>
+                                <option value="j-rock">j-rock</option>
+                                <option value="jazz">jazz</option>
+                                <option value="k-pop">k-pop</option>
+                                <option value="kids">kids</option>
+                                <option value="latin">latin</option>
+                                <option value="latino">latino</option>
+                                <option value="malay">malay</option>
+                                <option value="mandopop">mandopop</option>
+                                <option value="metal">metal</option>
+                                <option value="metal-misc">metal-misc</option>
+                                <option value="metalcore">metalcore</option>
+                                <option value="minimal-techno">minimal-techno</option>
+                                <option value="movies">movies</option>
+                                <option value="mpb">mpb</option>
+                                <option value="new-age">new-age</option>
+                                <option value="new-release">new-release</option>
+                                <option value="opera">opera</option>
+                                <option value="pagode">pagode</option>
+                                <option value="party">party</option>
+                                <option value="philippines-opm">philippines-opm</option>
+                                <option value="piano">piano</option>
+                                <option value="pop">pop</option>
+                                <option value="pop-film">pop-film</option>
+                                <option value="post-dubstep">post-dubstep</option>
+                                <option value="power-pop">power-pop</option>
+                                <option value="progressive-house">progressive-house</option>
+                                <option value="psych-rock">psych-rock</option>
+                                <option value="punk">punk</option>
+                                <option value="punk-rock">punk-rock</option>
+                                <option value="r-n-b">r-n-b</option>
+                                <option value="rainy-day">rainy-day</option>
+                                <option value="reggae">reggae</option>
+                                <option value="reggaeton">reggaeton</option>
+                                <option value="road-trip">road-trip</option>
+                                <option value="rock">rock</option>
+                                <option value="rock-n-roll">rock-n-roll</option>
+                                <option value="rockabilly">rockabilly</option>
+                                <option value="romance">romance</option>
+                                <option value="sad">sad</option>
+                                <option value="salsa">salsa</option>
+                                <option value="samba">samba</option>
+                                <option value="sertanejo">sertanejo</option>
+                                <option value="show-tunes">show-tunes</option>
+                                <option value="singer-songwriter">singer-songwriter</option>
+                                <option value="ska">ska</option>
+                                <option value="sleep">sleep</option>
+                                <option value="songwriter">songwriter</option>
+                                <option value="soul">soul</option>
+                                <option value="soundtracks">soundtracks</option>
+                                <option value="spanish">spanish</option>
+                                <option value="study">study</option>
+                                <option value="summer">summer</option>
+                                <option value="swedish">swedish</option>
+                                <option value="synth-pop">synth-pop</option>
+                                <option value="tango">tango</option>
+                                <option value="techno">techno</option>
+                                <option value="trance">trance</option>
+                                <option value="trip-hop">trip-hop</option>
+                                <option value="turkish">turkish</option>
+                                <option value="work-out">work-out</option>
+                                <option value="world-music">world-music</option>
+                            </select><br><br>
+                            <button type="submit" class="btn btn-outline-light" onclick="haalGenreRecommendationOp()">submit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-2  text-center">
+                    <div class="card box-shadow mx-auto" id="cardw">
+                        <div class="card-body">
+                            <h4 class="card-title">Artist</h4>
+                            <p class="card-text">Name an artist</p>
+                            <input id="artistrecommendation"><br><br>
+                            <button class="btn btn-outline-light" onclick="haalArtistRecommendationOp()">submit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-2 text-center" >
+                    <div class="card box-shadow mx-auto" id="padl">
+                        <div class="card-body">
+                            <h4 class="card-title">Track</h4>
+                            <p class="card-text">Name a track</p>
+                            <input id="trackrecommendation"> <br><br>
+                            <button class="btn btn-outline-light" onclick="haalTrackRecommendationOp()">submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row text-center">
+                <div class="col-sm-12" id="padbtn">
+                    <a class="btns mx-auto" onclick="window.location.replace('partyoverzicht.html');" type="button">
+                        <span>Voorkeuren doorgeven</span>
+                    </a>
+                </div>
+            </div>
+            <div class="row text-center" id="padbtn">
+                <div class="col-sm-12">
+                    <a class="btns mx-auto"  onclick="haalAlleRecommendationHistoryOp()" type="button">
+                        <span>alle recommendations</span>
+                    </a>
+            <div class="row">
+                <div class = "col-sm-12 text-center" >
+                    <div class="text-center mx-auto" id="resultaat" style="background-color:rgb(124, 124, 124); height: fit-content; width: fit-content; padding-right: 20px; padding-left:20px;"></div>
+                </div>
+                    
+            
+            </div>
         </div>
     </div>
+
+
     
-
-<h3>Geef een voorkeur op, op basis van genre</h3>
-<select name="list" id="selectedGenre">
-    <option selected id="genrerecomendation"></option>
-    <option value="acoustic">acoustic</option>
-    <option value="afrobeat">afrobeat</option>
-    <option value="alt-rock">alt-rock</option>
-    <option value="alternative">alternative</option>
-    <option value="ambient">ambient</option>
-    <option value="anime">anime</option>
-    <option value="black-metal">black-metal</option>
-    <option value="bluegrass">bluegrass</option>
-    <option value="blues">blues</option>
-    <option value="bossanova">bossanova</option>
-    <option value="brazil">brazil</option>
-    <option value="breakbeat">breakbeat</option>
-    <option value="british">british</option>
-    <option value="cantopop">cantopop</option>
-    <option value="chicago-house">chicago-house</option>
-    <option value="children">children</option>
-    <option value="chill">chill</option>
-    <option value="classical">classical</option>
-    <option value="club">club</option>
-    <option value="comedy">comedy</option>
-    <option value="country">country</option>
-    <option value="dance">dance</option>
-    <option value="dancehall">dancehall</option>
-    <option value="death-metal">death-metal</option>
-    <option value="deep-house">deep-house</option>
-    <option value="detroit-techno">detroit-techno</option>
-    <option value="disco">disco</option>
-    <option value="disney">disney</option>
-    <option value="drum-and-bass">drum-and-bass</option>
-    <option value="dub">dub</option>
-    <option value="dubstep">dubstep</option>
-    <option value="edm">edm</option>
-    <option value="electro">electro</option>
-    <option value="electronic">electronic</option>
-    <option value="emo">emo</option>
-    <option value="folk">folk</option>
-    <option value="forro">forro</option>
-    <option value="french">french</option>
-    <option value="funk">funk</option>
-    <option value="garage">garage</option>
-    <option value="german">german</option>
-    <option value="gospel">gospel</option>
-    <option value="goth">goth</option>
-    <option value="grindcore">grindcore</option>
-    <option value="groove">groove</option>
-    <option value="grunge">grunge</option>
-    <option value="guitar">guitar</option>
-    <option value="happy">happy</option>
-    <option value="hard-rock">hard-rock</option>
-    <option value="hardcore">hardcore</option>
-    <option value="hardstyle">hardstyle</option>
-    <option value="heavy-metal">heavy-metal</option>
-    <option value="hip-hop">hip-hop</option>
-    <option value="holidays">holidays</option>
-    <option value="honky-tonk">honky-tonk</option>
-    <option value="house">house</option>
-    <option value="idm">idm</option>
-    <option value="indian">indian</option>
-    <option value="indie">indie</option>
-    <option value="indie-pop">indie-pop</option>
-    <option value="industrial">industrial</option>
-    <option value="iranian">iranian</option>
-    <option value="j-dance">j-dance</option>
-    <option value="j-idol">j-idol</option>
-    <option value="j-pop">j-pop</option>
-    <option value="j-rock">j-rock</option>
-    <option value="jazz">jazz</option>
-    <option value="k-pop">k-pop</option>
-    <option value="kids">kids</option>
-    <option value="latin">latin</option>
-    <option value="latino">latino</option>
-    <option value="malay">malay</option>
-    <option value="mandopop">mandopop</option>
-    <option value="metal">metal</option>
-    <option value="metal-misc">metal-misc</option>
-    <option value="metalcore">metalcore</option>
-    <option value="minimal-techno">minimal-techno</option>
-    <option value="movies">movies</option>
-    <option value="mpb">mpb</option>
-    <option value="new-age">new-age</option>
-    <option value="new-release">new-release</option>
-    <option value="opera">opera</option>
-    <option value="pagode">pagode</option>
-    <option value="party">party</option>
-    <option value="philippines-opm">philippines-opm</option>
-    <option value="piano">piano</option>
-    <option value="pop">pop</option>
-    <option value="pop-film">pop-film</option>
-    <option value="post-dubstep">post-dubstep</option>
-    <option value="power-pop">power-pop</option>
-    <option value="progressive-house">progressive-house</option>
-    <option value="psych-rock">psych-rock</option>
-    <option value="punk">punk</option>
-    <option value="punk-rock">punk-rock</option>
-    <option value="r-n-b">r-n-b</option>
-    <option value="rainy-day">rainy-day</option>
-    <option value="reggae">reggae</option>
-    <option value="reggaeton">reggaeton</option>
-    <option value="road-trip">road-trip</option>
-    <option value="rock">rock</option>
-    <option value="rock-n-roll">rock-n-roll</option>
-    <option value="rockabilly">rockabilly</option>
-    <option value="romance">romance</option>
-    <option value="sad">sad</option>
-    <option value="salsa">salsa</option>
-    <option value="samba">samba</option>
-    <option value="sertanejo">sertanejo</option>
-    <option value="show-tunes">show-tunes</option>
-    <option value="singer-songwriter">singer-songwriter</option>
-    <option value="ska">ska</option>
-    <option value="sleep">sleep</option>
-    <option value="songwriter">songwriter</option>
-    <option value="soul">soul</option>
-    <option value="soundtracks">soundtracks</option>
-    <option value="spanish">spanish</option>
-    <option value="study">study</option>
-    <option value="summer">summer</option>
-    <option value="swedish">swedish</option>
-    <option value="synth-pop">synth-pop</option>
-    <option value="tango">tango</option>
-    <option value="techno">techno</option>
-    <option value="trance">trance</option>
-    <option value="trip-hop">trip-hop</option>
-    <option value="turkish">turkish</option>
-    <option value="work-out">work-out</option>
-    <option value="world-music">world-music</option>
-
-
-</select>
-<button type="submit" onclick="haalGenreRecommendationOp()">getGenreRecommendation</button>
-
-<br>
-<button onclick="haalAlleRecommendationHistoryOp()">toon alle recommendations in database</button>
-<div id="resultaat"></div>
-<br><br><br>
-<h3>Geef een voorkeur op, op basis van nummer</h3>
-<input id="trackrecommendation">
-<button onclick="haalTrackRecommendationOp()">getTrackRecommendation</button>
-<br><br><br>
-<h3>Geef een voorkeur op, op basis van artiest</h3>
-<input id="artistrecommendation">
-<button onclick="haalArtistRecommendationOp()">getArtistRecommendation</button>
-<br>
-<br>
-<button onclick="window.location.replace('partyoverzicht.html');" type="button" class="btn btn-primary">Voorkeuren doorgeven</button>
 </body>
 </html>
 

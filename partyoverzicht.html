@@ -43,35 +43,13 @@
     </nav>
 
     <h1 id="partynaam"></h1>
-    <script>
-        document.getElementById("partynaam").innerHTML = localStorage.getItem("feestNaam");
-    </script>
+    
 
 <!-- Display currently active Party Code -->
 <h2 id="partycode"></h1>
-<script>
-    document.getElementById("partycode").innerHTML = localStorage.getItem("feestCode");
-</script>
+
 
 <!-- Party Members TABLE -->
-<script>
-    function haalLedenLijst()
-    {
-        console.log("hallo");
-        var decode = localStorage.getItem("feestCode")
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function (){
-            if(this.readyState == 4) 
-            {
-                var antwoord = this.responseText;
-                var hetantwoordobject = JSON.parse(antwoord);
-                document.getElementById("eindresultaat").innerHTML = hetantwoordobject.gebruikers;
-            }
-        }
-        xhr.open("GET", "https://localhost:7003/api/Party/ledenlijst/" + decode, true);
-        xhr.send();
-    }
-</script>
 <button onclick=haalLedenLijst()> Refresh Ledenlijst</button>
 <div id="eindresultaat">Hier komt de tabel</div>
 
@@ -86,3 +64,29 @@
     <!-- functie toevoegen voor het sluiten van de registratie en het aanroepen van de create-playlist API -->
     <!-- BONUS: toon een dynamisch geupdate lijst van alle leden die hebben gejoined en voorkeuren hebben doorgegeven. -->
     <!-- op basis van de PartyUsertabel, waar de partyID gezocht word die is gekoppeld aan de huidige Partycode, en alle leden worden weergeven die daar in zitten -->
+
+    <script>
+        /*party naam*/
+        document.getElementById("partynaam").innerHTML = localStorage.getItem("feestNaam");
+
+        /*display current active party code*/
+        document.getElementById("partycode").innerHTML = localStorage.getItem("feestCode");
+
+        /*Party Members Table*/
+        function haalLedenLijst()
+        {
+            console.log("hallo");
+            var decode = localStorage.getItem("feestCode")
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function (){
+                if(this.readyState == 4) 
+                {
+                    var antwoord = this.responseText;
+                    var hetantwoordobject = JSON.parse(antwoord);
+                    document.getElementById("eindresultaat").innerHTML = hetantwoordobject.gebruikers;
+                }
+            }
+            xhr.open("GET", "https://localhost:7003/api/Party/ledenlijst/" + decode, true);
+            xhr.send();
+        }
+    </script>

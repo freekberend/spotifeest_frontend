@@ -1,22 +1,119 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f6f6f6;
+}
+.box-shadow{
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+} 
+*/
+#homep{
+  background: url("../img/smartphone-1283012_960_720.jpg");
+  display: table;
+  height: 100%;
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  padding-top:20px;
+  opacity: 70%;
+}
+#cardw{
+  width: 22rem;
+}
+
+#padl{
+  float: left; 
+  width: 22rem;
+}
+#padr{
+  float:right;
+  width: 22rem;
+}
+#texth{
+  padding-top:4em;
+}
 .card {
-    border: 0;
-    border-radius: 0;
-    color: #fff;
-    box-shadow: 5px 5px 10px #e1e1e1;
-    padding: 3em 0;
-    border-bottom-right-radius: 4em;
-    border-top-left-radius: 4em;
-    background: linear-gradient(to left, teal 50%, #26282b 50%);
-    background-size: 200%;
-    background-position: right;
-    transition: background-position 0.5s ease-out;
-  }
-  .card-icon {
-    margin: 0 1em;
-  }
-  .card-icon i{
-    font-size: 3em;
-  }
-  .card:hover {
-    background-position: left;
-  }
+  border: 0;
+  border-radius: 0;
+  color: #e1e1e1;
+  box-shadow: 5px 10px 10px #000000cd;
+  padding: 3em 0;
+  /*border-bottom-right-radius: 4em;
+  border-top-left-radius: 4em;*/
+  background: linear-gradient(to left, #26282b 50%, #188185 50%);
+  background-size: 200%;
+  background-position: right;
+  transition: background-position 0.5s ease-out;
+}
+.card-icon {
+  margin: 0 1em;
+}
+.card-icon i{
+  font-size: 3em;
+}
+
+.card:hover {
+  background-position: left;
+}
+
+#containervh{
+  width: 100%;
+}
+
+#pcon{
+  padding-top:100px;
+}
+
+#padbtn{
+  margin-top: 4em;
+  
+}
+
+
+.btns {
+
+	color: #00a84f;
+	display: block;
+	font: 1.125rem 'Oswald', Arial, sans-serif; /*18*/
+	height: 80px;
+	letter-spacing: 1px;
+	padding: 5px;
+  
+	position: relative;
+  text-decoration: none;
+	text-transform: uppercase;
+	width: 264px;
+	z-index: 2;
+}
+
+
+.btns:hover {
+	color: #e1e1e1;
+}
+
+.btns span {
+	align-items: center;
+	background: #26282b;
+  color: #e1e1e1;
+	border-radius: 40px;
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	transition: background .5s ease;
+	width: 100%;
+}
+
+.btns:hover span {
+	background: #188185;
+  color:#e1e1e1;
+}
+
