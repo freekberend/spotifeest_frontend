@@ -105,4 +105,6 @@
             xhr.open("GET", "https://localhost:7003/api/Party/ledenlijst/" + decode, true);
             xhr.send();
         }
+        haalLedenLijst();
+        setInterval(haalLedenLijst(), 1500);
     </script>
