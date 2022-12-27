@@ -35,7 +35,7 @@
                     <a class="nav-link" href="#">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">sign out</a>
+                    <a class="nav-link" href="#" onclick="logOut()">sign out</a>
                 </li>
           </ul>
         </div>
@@ -235,89 +235,3 @@
     
 </body>
 </html>
-
-
-<script>
-    var url = 'https://spotifeest-python-backend.azurewebsites.net';
-    var urlCS = 'https://localhost:7003';
-
-    function haalGenreRecommendationOp(){
-        var genre = document.getElementById("selectedGenre")
-        var r = genre.value
-        console.log(r)
-        console.log("start");
-
-        var genreSend = {}
-        console.log(r)
-        genreSend.seed_genres = r;
-        var genreSendJSON = JSON.stringify(genreSend);
-        fetch(url+'/get_recommendations',{
-            method: "POST", body: genreSendJSON
-        })
-        .then(c => c.json())
-        .then(d => verwerkInformatie(d, r, "genre: ") )
-    }
-
-
-
-
-    function haalTrackRecommendationOp(){
-        console.log("start");
-        var r = document.getElementById("trackrecommendation").value;
-        var trackSend = {}
-        trackSend.track1 = r;
-        var genreSendJSON = JSON.stringify(trackSend);
-        fetch(url+'/get_track_recommendations',{
-            method: "POST", body: genreSendJSON
-        })
-        .then(c => c.json())
-        .then(d => verwerkInformatie(d, "trackrecommendation", "track: ") )
-    }
-
-    function haalArtistRecommendationOp(){
-        console.log("start");
-        var r = document.getElementById("artistrecommendation").value;
-        var artistSend = {}
-        artistSend.artist1 = r;
-        var genreSendJSON = JSON.stringify(artistSend);
-        fetch(url+'/get_artist_recommendations',{
-            method: "POST", body: genreSendJSON
-        })
-        .then(c => c.json())
-        .then(d => verwerkInformatie(d, "artistrecommendation", "artist: " ))
-    }
-
-
-
-
-
-
-    function verwerkInformatie(recommendation, invoer, type){
-        var rh = {}
-        rh.track = recommendation.tracks[0].name
-        rh.spotifytrackid = recommendation.tracks[0].id
-        rh.artist = recommendation.tracks[0].artists[0].name
-        rh.keuze = type + invoer
-        rh.jsonstring = 'abc'
-        var rhJSON = JSON.stringify(rh)
-        console.log(rhJSON)
-        fetch(urlCS+'/slarechisop/' + localStorage.getItem("token") + "/" + localStorage.getItem("feestCode"),{
-            method: "POST", 
-            headers: { 'Content-Type': 'application/json' },
-            body: rhJSON
-        })
-        .then(c => console.log(c))
-  
-    }
-    function haalAlleRecommendationHistoryOp(){
-        fetch(urlCS + "/allerh/7")
-        .then(t => t.json())
-        .then(d => toonAlleRecommendationHistory(d))
-    }
-    function toonAlleRecommendationHistory(rhs){
-        document.getElementById("resultaat").innerHTML = ""
-        for(var x = 0; x < rhs.length; x++ ){
-            document.getElementById("resultaat").innerHTML += `<br>${rhs[x].keuze} - ${rhs[x].track}`;
-        }
-    }
-</script>

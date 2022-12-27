@@ -35,7 +35,7 @@
                     <a class="nav-link" href="#">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">sign out</a>
+                    <a class="nav-link" href="#" onclick="logOut()">sign out</a>
                 </li>
           </ul>
         </div>
@@ -46,7 +46,7 @@
         <div class="container" id="pad">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="text-center mx-auto styleparty"> some playlist</div>
+                    <div class="text-center mx-auto styleparty" id="resultaat"> some playlist</div>
                 </div>
                 <div class="col-md-6 alignr">
                     <h1 id="partynaam" style="color:aliceblue">party</h1>
@@ -56,41 +56,5 @@
         </div>
     </div>
     
-    
-    
-    
-    
-    
-    
-    
-
-<!-- Display currently active Party Code -->
-
-
-
-    <div id="resultaat"></div>
-    
 </body>
 </html>
-
-<script>
-    var urlCS = 'https://localhost:7003';
-    
-    function GetPlaylist(){
-        fetch(urlCS + "/allerh/7")
-        .then(t => t.json())
-        .then(d => ShowPlaylist(d))
-    }
-    function ShowPlaylist(rhs){
-        document.getElementById("resultaat").innerHTML = ""
-        for(var x = 0; x < rhs.length; x++ ){
-            document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
-        }
-    }
-    
-   
-    document.getElementById("partynaam").innerHTML = localStorage.getItem("feestNaam");
-    document.getElementById("partycode").innerHTML = localStorage.getItem("feestCode");
-    
-    
-</script>
