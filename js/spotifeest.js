@@ -349,6 +349,6 @@ function haalAlleRecommendationHistoryOp(){
 function toonAlleRecommendationHistory(rhs){
     document.getElementById("resultaat").innerHTML = ""
     for(var x = 0; x < rhs.length; x++ ){
-        document.getElementById("resultaat").innerHTML += `<br>${rhs[x].keuze} - ${rhs[x].track}`;
+        document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
     }
 }
