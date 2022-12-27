@@ -272,7 +272,7 @@ function GetPlaylist(){
 function ShowPlaylist(rhs){
     document.getElementById("resultaat").innerHTML = ""
     for(var x = 0; x < rhs.length; x++ ){
-        document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
+        document.getElementById("resultaat").innerHTML += `${rhs[x].artist} - ${rhs[x].track}<br>`;
     }
 }
 
@@ -295,7 +295,13 @@ function haalGenreRecommendationOp(){
         method: "POST", body: genreSendJSON
     })
     .then(c => c.json())
-    .then(d => verwerkInformatie(d, r, "genre: ") )
+    .then(d => {
+        verwerkInformatie(d, r, "genre: ") 
+        document.getElementById("genresubmitted").style="display:block";
+        setTimeout(()=>{
+            document.getElementById("genresubmitted").style="display:none";
+        },2000)
+    })
 }
 
 function haalTrackRecommendationOp(){
@@ -308,7 +314,13 @@ function haalTrackRecommendationOp(){
         method: "POST", body: genreSendJSON
     })
     .then(c => c.json())
-    .then(d => verwerkInformatie(d, "trackrecommendation", "track: ") )
+    .then(d => {
+        verwerkInformatie(d, "trackrecommendation", "track: ");
+        document.getElementById("tracksubmitted").style="display:block";
+        setTimeout(()=>{
+            document.getElementById("tracksubmitted").style="display:none";
+        },2000)
+    })
 }
 
 function haalArtistRecommendationOp(){
@@ -321,7 +333,13 @@ function haalArtistRecommendationOp(){
         method: "POST", body: genreSendJSON
     })
     .then(c => c.json())
-    .then(d => verwerkInformatie(d, "artistrecommendation", "artist: " ))
+    .then(d => {
+        verwerkInformatie(d, "artistrecommendation", "artist: " );
+        document.getElementById("artistsubmitted").style="display:block";
+        setTimeout(()=>{
+            document.getElementById("artistsubmitted").style="display:none";
+        },2000)
+})
 }
 
 function verwerkInformatie(recommendation, invoer, type){
@@ -347,8 +365,9 @@ function haalAlleRecommendationHistoryOp(){
     .then(d => toonAlleRecommendationHistory(d))
 }
 function toonAlleRecommendationHistory(rhs){
+    alert("hallo")
     document.getElementById("resultaat").innerHTML = ""
     for(var x = 0; x < rhs.length; x++ ){
-        document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
+        document.getElementById("resultaat").innerHTML += `${rhs[x].artist} - ${rhs[x].track}<br>`;
     }
 }
