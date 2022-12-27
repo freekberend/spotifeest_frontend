@@ -9,6 +9,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link href="css/style.css" rel="stylesheet">
+<link href="css/playlists.css" rel="stylesheet">
 <script src="js/spotifeest.js"></script>
 </head>
 
@@ -41,16 +42,32 @@
         </div>
     </nav>
     
-    <h1 id="partynaam"></h1>
-    <script>
-        document.getElementById("partynaam").innerHTML = localStorage.getItem("feestNaam");
-    </script>
+
+    <div id="homep">
+        <div class="container" id="pad">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center mx-auto styleparty"> some playlist</div>
+                </div>
+                <div class="col-md-6 alignr">
+                    <h1 id="partynaam" style="color:aliceblue">party</h1>
+                    <h2  id="partycode" style="color:aliceblue">code</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
 
 <!-- Display currently active Party Code -->
-<h2 id="partycode"></h1>
-<script>
-    document.getElementById("partycode").innerHTML = localStorage.getItem("feestCode");
-</script>
+
+
 
     <div id="resultaat"></div>
     
@@ -72,19 +89,9 @@
         }
     }
     
-    
+   
+    document.getElementById("partynaam").innerHTML = localStorage.getItem("feestNaam");
+    document.getElementById("partycode").innerHTML = localStorage.getItem("feestCode");
     
     
 </script>
-
-<body onload = "GetPlaylist()">
-
-<br>
-Zie hier een mooie playlist
-
-
-
-
-
-
-</body>

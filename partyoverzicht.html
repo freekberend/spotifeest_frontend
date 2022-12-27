@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link href="css/style.css" rel="stylesheet">
+<link href="css/partyoverzicht.css" rel="stylesheet">
 <script src="js/spotifeest.js"></script>
 </head>
 
@@ -42,24 +43,39 @@
         </div>
     </nav>
 
-    <h1 id="partynaam"></h1>
-    
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col-md-12" style="background-color: rgb(152, 197, 209);">
+                <h1 id="partynaam">Partynaam</h1> 
+                <span> Partycode: </span>
+                <span id="partycode">KHIYF67s</span><br>
+                <p>Invite others by sharing the partycode</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="pad">
+                <h5 style="color: rgb(229, 225, 225)">View the list of participants by clicking on the button "show participants".<br> 
+                Once everyone has joined close and finalize party by clicking on the button "start party"</h5>
+            </div>
+        </div>
 
-<!-- Display currently active Party Code -->
-<h2 id="partycode"></h1>
-
-
-<!-- Party Members TABLE -->
-<button onclick=haalLedenLijst()> Refresh Ledenlijst</button>
-<div id="eindresultaat">Hier komt de tabel</div>
-
-
-
-<!-- Button to Close and Finalize Party -->
-<br>
-<button onclick="window.location.replace('partyplaylist.html');" type="button" class="btn btn-primary">Start het Feestje</button>
+        <div class="row">
+            <div class="col-md-4" id="pad">
+                <button class="button-62" role="button" onclick="haalLedenLijst()">List of Participants</button>
+                <br><br>
+                <div class = "text-center mx-auto styleres" id="eindresultaat">Hier komt de tabel</div>
+            </div>
+            <div class="col-md-4" id="pad3">
+                <img src="img/record-breaker-nicebleed-.jpg" alt="">
+            </div>
+            <div class="col-md-4" id="pad2">
+                <button class="button-49" role="button" onclick="window.location.replace('partyplaylist.html');">Start Party!</button>
+            </div>
+        </div>
+    </div>
 </body>
-</html>
+
+
 
     <!-- functie toevoegen voor het sluiten van de registratie en het aanroepen van de create-playlist API -->
     <!-- BONUS: toon een dynamisch geupdate lijst van alle leden die hebben gejoined en voorkeuren hebben doorgegeven. -->

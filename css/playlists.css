@@ -1,0 +1,27 @@
+#homep{
+    background: url("../img/6970885-dj-neon-lights.jpg");
+    display: table;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    opacity: 90%; 
+}
+.styleparty{
+    padding-top:1em; 
+    padding-bottom: 1em;
+    color:rgb(1, 1, 1);
+    background-color:rgb(228, 228, 228); 
+    height: fit-content; 
+    width: fit-content; 
+    padding-right: 1em; 
+    padding-left:1em;
+    opacity:0.9;
+  }
+#pad{
+    padding-top:5em;
+}
+
+.alignr{
+    text-align: right;
+}
