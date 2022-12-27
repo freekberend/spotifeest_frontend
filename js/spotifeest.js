@@ -261,3 +261,94 @@ function tonenVanTreinen(treinArray){
         document.getElementById("uitvoer").innerHTML += "<br>-"+treinArray[x].thuisStation;
     }
 }
+
+function GetPlaylist(){
+    fetch(csharp_url + "/groeprecs/" + localStorage.getItem("feestCode"))
+    .then(t => t.json())
+    .then(d => ShowPlaylist(d))
+    .then(document.getElementById("partynaam").innerHTML = localStorage.getItem("feestNaam"))
+    .then(document.getElementById("partycode").innerHTML = localStorage.getItem("feestCode"))
+}
+function ShowPlaylist(rhs){
+    document.getElementById("resultaat").innerHTML = ""
+    for(var x = 0; x < rhs.length; x++ ){
+        document.getElementById("resultaat").innerHTML += `<br>${rhs[x].artist} - ${rhs[x].track}`;
+    }
+}
+
+function logOut() {
+    localStorage.clear();
+    checkIfTokenPresent()
+}
+
+function haalGenreRecommendationOp(){
+    var genre = document.getElementById("selectedGenre")
+    var r = genre.value
+    console.log(r)
+    console.log("start");
+
+    var genreSend = {}
+    console.log(r)
+    genreSend.seed_genres = r;
+    var genreSendJSON = JSON.stringify(genreSend);
+    fetch(python_url+'/get_recommendations',{
+        method: "POST", body: genreSendJSON
+    })
+    .then(c => c.json())
+    .then(d => verwerkInformatie(d, r, "genre: ") )
+}
+
+function haalTrackRecommendationOp(){
+    console.log("start");
+    var r = document.getElementById("trackrecommendation").value;
+    var trackSend = {}
+    trackSend.track1 = r;
+    var genreSendJSON = JSON.stringify(trackSend);
+    fetch(python_url + '/get_track_recommendations',{
+        method: "POST", body: genreSendJSON
+    })
+    .then(c => c.json())
+    .then(d => verwerkInformatie(d, "trackrecommendation", "track: ") )
+}
+
+function haalArtistRecommendationOp(){
+    console.log("start");
+    var r = document.getElementById("artistrecommendation").value;
+    var artistSend = {}
+    artistSend.artist1 = r;
+    var genreSendJSON = JSON.stringify(artistSend);
+    fetch(python_url+'/get_artist_recommendations',{
+        method: "POST", body: genreSendJSON
+    })
+    .then(c => c.json())
+    .then(d => verwerkInformatie(d, "artistrecommendation", "artist: " ))
+}
+
+function verwerkInformatie(recommendation, invoer, type){
+    var rh = {}
+    rh.track = recommendation.tracks[0].name
+    rh.spotifytrackid = recommendation.tracks[0].id
+    rh.artist = recommendation.tracks[0].artists[0].name
+    rh.keuze = type + invoer
+    rh.jsonstring = 'abc'
+    var rhJSON = JSON.stringify(rh)
+    console.log(rhJSON)
+    fetch(csharp_url+'/slarechisop/' + localStorage.getItem("token") + "/" + localStorage.getItem("feestCode"),{
+        method: "POST", 
+        headers: { 'Content-Type': 'application/json' },
+        body: rhJSON
+    })
+    .then(c => console.log(c))
+
+}
+function haalAlleRecommendationHistoryOp(){
+    fetch(csharp_url + "/userrecs/" + localStorage.getItem("token") + "/" + localStorage.getItem("feestCode"))
+    .then(t => t.json())
+    .then(d => toonAlleRecommendationHistory(d))
+}
+function toonAlleRecommendationHistory(rhs){
+    document.getElementById("resultaat").innerHTML = ""
+    for(var x = 0; x < rhs.length; x++ ){
+        document.getElementById("resultaat").innerHTML += `<br>${rhs[x].keuze} - ${rhs[x].track}`;
+    }
+}
