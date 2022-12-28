@@ -365,7 +365,6 @@ function haalAlleRecommendationHistoryOp(){
     .then(d => toonAlleRecommendationHistory(d))
 }
 function toonAlleRecommendationHistory(rhs){
-    alert("hallo")
     document.getElementById("resultaat").innerHTML = ""
     for(var x = 0; x < rhs.length; x++ ){
         document.getElementById("resultaat").innerHTML += `${rhs[x].artist} - ${rhs[x].track}<br>`;
